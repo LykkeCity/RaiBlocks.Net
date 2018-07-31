@@ -12,6 +12,7 @@
     <PackageTags>Lykke</PackageTags>
     <PackageProjectUrl>https://github.com/LykkeCity/RaiBlocks.Net</PackageProjectUrl>
     <PackageIconUrl>https://avatars3.githubusercontent.com/u/14153330?v=3&amp;amp;s=200</PackageIconUrl>
+    <PackageId>Lykke.RaiBlocks.Client</PackageId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
