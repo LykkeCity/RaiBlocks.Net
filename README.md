@@ -1,13 +1,9 @@
-# RaiBlocks.Net
+# Lykke.RaiBlocks.Client
 
-An unofficial .NET API Wrapper for RaiBlocks RPC Protocol (https://github.com/clemahieu/raiblocks).
-
-
-## Installation 
-Stable build will be available soon on NuGet.
+An unofficial .NET API Wrapper for RaiBlocks RPC Protocol (https://github.com/nanocurrency/raiblocks).
 
 ## Compiling
-In order to compile RaiBlocks.Net, you require the following:
+In order to compile Lykke.RaiBlocks.Client, you require the following:
 
 - [Visual Studio 2017](https://www.microsoft.com/net/core#windowsvs2017)
 
@@ -29,9 +25,3 @@ var node = new RaiBlocksRpc("http://localhost:7076/");
 // Insert next deterministic key in wallet
 var res = await _node.CreateAccountAsync("000D1BAEC8EC208142C99059B393051BAC8380F9B5A2E6B2489A277D81789F3F");
 ```
-
-## Donations
-If you like what you see, feel free to send me some XRB:
-
-xrb_3gheyy3ud6k168c57hyjwnrkiyqubpod9symzdcazxzi8n1at4j9yt859of9
-xrb_19rm3846etzyordsgycpe1shk66paqy4bu1e7iiaxzj9wq8877s7tewfd6h6
