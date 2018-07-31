@@ -255,6 +255,26 @@ namespace RaiBlocks
             var handler = new ActionHandler<GetChain, GetChainResult>(_node);
             return await handler.Handle(action);
         }
+        
+        /// <summary>
+        /// Returns a list of block hashes which have not yet been received by these accounts
+        /// </summary>
+        /// <param name="accounts">List of accounts</param>
+        /// <param name="count">Count</param>
+        /// <param name="source">Is need return a list of pending block hashes with amount and source accounts</param>
+        /// <returns>List of block hashes which have not yet been received by these accounts <see cref="AccountsPendingResult"/></returns>
+        public async Task<AccountsPendingResult> GetAccountsPendingAsync(List<string> accounts, long count = -1, bool source = true)
+        {
+            var action = new AccountsPending
+            {
+                Accounts = accounts,
+                Source = source,
+                Count = count,
+                
+            };
+            var handler = new ActionHandler<AccountsPending, AccountsPendingResult>(_node);
+            return await handler.Handle(action);
+        }
 
         #endregion
     }
