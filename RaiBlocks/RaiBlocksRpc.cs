@@ -96,7 +96,8 @@ namespace RaiBlocks
         /// <param name="source">Include source info</param>
         /// <param name="balance">Include balance info</param>
         /// <returns>Block info.</returns>
-        public async Task<RetrieveBlocksInfoResult> GetRetrieveBlocksInfoAsync(List<string> hashes, bool pending = false,
+        public async Task<RetrieveBlocksInfoResult> GetRetrieveBlocksInfoAsync(List<string> hashes,
+            bool pending = false,
             bool source = false, bool balance = false)
         {
             var action = new RetrieveBlocksInfo
@@ -157,6 +158,11 @@ namespace RaiBlocks
             return await handler.Handle(action);
         }
 
+        /// <summary>
+        /// Validate account action
+        /// </summary>
+        /// <param name="acc">Account</param>
+        /// <returns>Validate result <see cref="ValidateAccountResult"/></returns>
         public async Task<ValidateAccountResult> ValidateAccountAsync(RaiAddress acc)
         {
             var action = new ValidateAccount(acc);
@@ -164,6 +170,11 @@ namespace RaiBlocks
             return await handler.Handle(action);
         }
 
+        /// <summary>
+        /// Process block action
+        /// </summary>
+        /// <param name="block">Block</param>
+        /// <returns>Block hash <see cref="ProcessBlockResult"/></returns>
         public async Task<ProcessBlockResult> ProcessBlockAsync(string block)
         {
             var action = new ProcessBlock(block);
@@ -171,6 +182,11 @@ namespace RaiBlocks
             return await handler.Handle(action);
         }
 
+        /// <summary>
+        /// Work generate action
+        /// </summary>
+        /// <param name="hash">Block hash</param>
+        /// <returns>Generated work <see cref="WorkGenerateResult"/></returns>
         public async Task<WorkGenerateResult> GetWorkAsync(string hash)
         {
             var action = new WorkGenerate(hash);
@@ -178,6 +194,11 @@ namespace RaiBlocks
             return await handler.Handle(action);
         }
 
+        /// <summary>
+        /// Get account key
+        /// </summary>
+        /// <param name="account">Account</param>
+        /// <returns>Ket <see cref="AccountKeyResult"/></returns>
         public async Task<AccountKeyResult> GetAccountKeyAsync(RaiAddress account)
         {
             var action = new AccountKey
@@ -189,6 +210,16 @@ namespace RaiBlocks
             return await handler.Handle(action);
         }
 
+        /// <summary>
+        /// Create block action
+        /// </summary>
+        /// <param name="wallet">Wallet</param>
+        /// <param name="account">Account</param>
+        /// <param name="destination">Destination</param>
+        /// <param name="balance">Balance</param>
+        /// <param name="amount">Amount</param>
+        /// <param name="previous">Previous block hash</param>
+        /// <returns>Created block info <see cref="BlockCreateResult"/></returns>
         public async Task<BlockCreateResult> BlockCreateSendAsync(string wallet, RaiAddress account,
             RaiAddress destination, RaiUnits.RaiRaw balance, RaiUnits.RaiRaw amount, string previous)
         {
@@ -203,6 +234,25 @@ namespace RaiBlocks
                 Previous = previous
             };
             var handler = new ActionHandler<BlockCreate, BlockCreateResult>(_node);
+            return await handler.Handle(action);
+        }
+
+        /// <summary>
+        /// Returns a consecutive list of block hashes in the account chain starting at block up to count.
+        /// Will list all blocks back to the open block of this chain when count is set to "-1".
+        /// The requested block hash is included in the answer.
+        /// </summary>
+        /// <param name="block">Block hash</param>
+        /// <param name="count">Block count</param>
+        /// <returns>Chain <see cref="GetChainResult"/></returns>
+        public async Task<GetChainResult> GetChainAsync(string block, long count = -1)
+        {
+            var action = new GetChain
+            {
+                Block = block,
+                Count = count
+            };
+            var handler = new ActionHandler<GetChain, GetChainResult>(_node);
             return await handler.Handle(action);
         }
 

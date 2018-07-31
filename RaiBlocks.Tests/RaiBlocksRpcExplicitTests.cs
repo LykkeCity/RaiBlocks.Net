@@ -9,7 +9,8 @@ namespace RaiBlocks.Tests
     {
         private RaiBlocksRpc _node = new RaiBlocksRpc("http://localhost:7076/");
         private RaiAddress _address = new RaiAddress("xrb_1q3hqecaw15cjt7thbtxu3pbzr1eihtzzpzxguoc37bj1wc5ffoh7w74gi6p");
-
+        private string hash = "";
+        
         [Test]
         public async Task GetBalanceAsync()
         {
@@ -32,6 +33,12 @@ namespace RaiBlocks.Tests
         public async Task GetAccountHistory()
         {
             var x = await _node.GetAccountHistoryAsync(_address, 200);
+        }
+        
+        [Test]
+        public async Task GetChain()
+        {
+            var x = await _node.GetChainAsync(hash, -1);
         }
     }
 }
