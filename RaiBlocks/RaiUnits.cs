@@ -12,7 +12,7 @@ namespace RaiBlocks
             public RaiRaw(string value)
             {
                 if (!BigInteger.TryParse(value, out var x)) throw new InvalidCastException($"Can not convert {value} to RAW.");
-
+               
                 Value = x;
             }
 
@@ -27,6 +27,17 @@ namespace RaiBlocks
             {
                 return Value.ToString();
             }
+            
+            public static RaiRaw operator +(RaiRaw c1, RaiRaw c2)
+            {
+                return new RaiRaw ((c1.Value + c2.Value).ToString());
+            }
+            
+            public static RaiRaw operator -(RaiRaw c1, RaiRaw c2)
+            {
+                return new RaiRaw ((c1.Value - c2.Value).ToString());
+            }
+            
         }
     }
 }
