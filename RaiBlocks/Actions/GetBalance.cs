@@ -12,7 +12,7 @@ namespace RaiBlocks.Actions
         public string Action { get; } = "account_balance";
 
         [JsonProperty("account")]
-        public string AccountNumber { get; private set; }
+        public string AccountNumber { get; set; }
 
         public GetBalance(RaiAddress address)
         {
