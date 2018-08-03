@@ -14,7 +14,7 @@ namespace RaiBlocks.Actions
         public string Action { get; } = "validate_account_number";
 
         [JsonProperty("account")]
-        public string AccountNumber { get; private set; }
+        public string AccountNumber { get; set; }
 
         public ValidateAccount(RaiAddress address)
         {

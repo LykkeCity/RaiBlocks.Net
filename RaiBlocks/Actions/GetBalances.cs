@@ -14,7 +14,7 @@ namespace RaiBlocks.Actions
         public string Action { get; } = "accounts_balances";
 
         [JsonProperty("accounts")]
-        public IEnumerable<string> AccountsNumbers { get; private set; }
+        public IEnumerable<string> AccountsNumbers { get; set; }
 
         public GetBalances(IEnumerable<RaiAddress> addresses)
         {

@@ -134,9 +134,9 @@ namespace RaiBlocks
         /// <summary>
         /// Reports send/receive information for a account
         /// </summary>>
-        public async Task<AccountHistoryResult> GetAccountHistoryAsync(RaiAddress acc, int count = 1)
+        public async Task<AccountHistoryResult> GetAccountHistoryAsync(RaiAddress acc, int count = 1, string head = null)
         {
-            var action = new GetAccountHistory(acc, count);
+            var action = new GetAccountHistory(acc, count, head);
             var handler = new ActionHandler<GetAccountHistory, AccountHistoryResult>(_node);
             return await handler.Handle(action);
         }
@@ -273,6 +273,16 @@ namespace RaiBlocks
                 
             };
             var handler = new ActionHandler<AccountsPending, AccountsPendingResult>(_node);
+            return await handler.Handle(action);
+        }
+        
+        public async Task<BlockAccountResult> GetBlockAccountAsync(string hash)
+        {
+            var action = new BlockAccount
+            {
+                Hash = hash
+            };
+            var handler = new ActionHandler<BlockAccount, BlockAccountResult>(_node);
             return await handler.Handle(action);
         }
 

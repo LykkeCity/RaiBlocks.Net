@@ -5,7 +5,7 @@ namespace RaiBlocks.ValueObjects
 {
     public class RaiAddress : IEquatable<RaiAddress>
     {
-        public string Value { get; private set; }
+        public string Value { get; set; }
 
         public RaiAddress(string value)
         {

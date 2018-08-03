@@ -12,17 +12,17 @@ namespace RaiBlocks.Actions
         public string Action { get; } = "send";
 
         [JsonProperty("wallet")]
-        public string Wallet { get; private set; }
+        public string Wallet { get; set; }
 
         [JsonProperty("source")]
-        public RaiAddress Source { get; private set; }
+        public RaiAddress Source { get; set; }
 
         [JsonProperty("destination")]
-        public RaiAddress Destination { get; private set; }
+        public RaiAddress Destination { get; set; }
 
         [JsonConverter(typeof(StringToRawConverter))]
         [JsonProperty("send")]
-        public RaiUnits.RaiRaw Amount { get; private set; }
+        public RaiUnits.RaiRaw Amount { get; set; }
 
         public Send(string wallet, RaiAddress source, RaiAddress destination, RaiUnits.RaiRaw amount)
         {

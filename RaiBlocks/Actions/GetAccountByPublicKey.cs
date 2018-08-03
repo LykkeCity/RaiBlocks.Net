@@ -11,7 +11,7 @@ namespace RaiBlocks.Actions
         public string Action { get; } = "account_get";
 
         [JsonProperty("key")]
-        public string Key { get; private set; }
+        public string Key { get; set; }
 
         public GetAccountByPublicKey(string key)
         {
