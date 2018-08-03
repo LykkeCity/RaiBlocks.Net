@@ -21,7 +21,7 @@ namespace RaiBlocks.Results
         public BlockType Type { get; set; }
 
         [JsonProperty("account")]
-        public string RepresentativeBlock { get; set; }
+        public string Account { get; set; }
 
         [JsonConverter(typeof(StringToRawConverter))]
         [JsonProperty("amount")]
