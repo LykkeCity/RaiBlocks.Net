@@ -9,6 +9,7 @@ namespace RaiBlocks.ValueObjects
         open,
         receive,
         send,
-        change
+        change,
+        state
     }
 }
