@@ -20,7 +20,13 @@ namespace RaiBlocks
 
         public async Task<TResult> Handle(TAction action)
         {
-            var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(action));
+            var stringPayload = await Task.Run(() => JsonConvert.SerializeObject(
+                action, 
+                Formatting.None, 
+                new JsonSerializerSettings { 
+                    NullValueHandling = NullValueHandling.Ignore
+                    
+                }));
             var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
             using (var httpClient = new HttpClient())
