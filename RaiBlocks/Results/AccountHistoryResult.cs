@@ -5,7 +5,7 @@ using RaiBlocks.ValueObjects;
 
 namespace RaiBlocks.Results
 {
-    public class AccountHistoryResult
+    public class AccountHistoryResult : ErrorResult
     {
         [JsonProperty("history")]
         public SingleAccountHistory[] Entries { get; set; }

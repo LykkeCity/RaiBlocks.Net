@@ -36,7 +36,8 @@ namespace RaiBlocks.Tests
         [Test]
         public async Task GetAccountHistory()
         {
-            var x = await _node.GetAccountHistoryAsync(_address, 200);
+            var x = await _node.GetAccountHistoryAsync(_address, 10);
+            Assert.AreEqual(x.Error, null);
         }
 
         [Test]
@@ -46,7 +47,7 @@ namespace RaiBlocks.Tests
         }
 
         [Test]
-        public async Task GetAccountsPendingAsync()
+        public async Task GetAccountsPending()
         {
             var x = await _node.GetAccountsPendingAsync(new List<string> {_address}, -1, true);
         }
