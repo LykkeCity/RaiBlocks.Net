@@ -66,9 +66,9 @@ namespace RaiBlocks
         /// <summary>
         /// Returns frontier, open block, change representative block, balance, last modified timestamp from local database & block count for account
         /// </summary>
-        public async Task<AccountInformationResult> GetAccountInformationAsync(RaiAddress acc)
+        public async Task<AccountInformationResult> GetAccountInformationAsync(RaiAddress acc, bool representative = false, bool weight = false, bool pending = false)
         {
-            var action = new GetAccountInformation(acc);
+            var action = new GetAccountInformation(acc, representative, weight, pending);
             var handler = new ActionHandler<GetAccountInformation, AccountInformationResult>(_node);
             return await handler.Handle(action);
         }
