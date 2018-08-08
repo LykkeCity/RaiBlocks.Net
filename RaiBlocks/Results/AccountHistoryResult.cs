@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RaiBlocks.Converters;
 using RaiBlocks.ValueObjects;
@@ -8,7 +10,16 @@ namespace RaiBlocks.Results
     public class AccountHistoryResult : ErrorResult
     {
         [JsonProperty("history")]
-        public SingleAccountHistory[] Entries { get; set; }
+        public List<SingleAccountHistory> Entries { get; set; }
+        
+        [OnDeserialized]
+        public void OnDeserialized(StreamingContext context)
+        {
+            if (Entries == null && Error == null)
+            {
+                Entries = new List<SingleAccountHistory>();
+            }
+        }
     }
 
     public class SingleAccountHistory
