@@ -52,5 +52,41 @@ namespace RaiBlocks.Tests
         {
             var x = await _node.GetAccountsPendingAsync(new List<string> {_address}, -1, true);
         }
+        
+        [Test]
+        public async Task GetAccountsPendingWork()
+        {
+            var x = await _node.GetWorkAsync(hash);
+            Assert.AreNotEqual(x, null);
+            Assert.AreNotEqual(x.Work, null);
+        }
+        
+        [Test]
+        public async Task GetAccountInfo()
+        {
+            var x = await _node.GetAccountInformationAsync(_address);
+            Assert.AreNotEqual(x, null);
+            Assert.AreEqual(x.Representative, null);
+            Assert.AreEqual(x.Weight, null);
+            Assert.AreEqual(x.Pending, null);
+            
+            x = await _node.GetAccountInformationAsync(_address, true);
+            Assert.AreNotEqual(x, null);
+            Assert.AreNotEqual(x.Representative, null);
+            Assert.AreEqual(x.Weight, null);
+            Assert.AreEqual(x.Pending, null);
+            
+            x = await _node.GetAccountInformationAsync(_address, true, true);
+            Assert.AreNotEqual(x, null);
+            Assert.AreNotEqual(x.Representative, null);
+            Assert.AreNotEqual(x.Weight, null);
+            Assert.AreEqual(x.Pending, null);
+            
+            x = await _node.GetAccountInformationAsync(_address, true, true, true);
+            Assert.AreNotEqual(x, null);
+            Assert.AreNotEqual(x.Representative, null);
+            Assert.AreNotEqual(x.Weight, null);
+            Assert.AreNotEqual(x.Pending, null);
+        }
     }
 }
